@@ -26,9 +26,12 @@
     };
 
     function sendMessage() {
-        const message = document.getElementById('message').value;
-        socket.send(message);
-        document.getElementById('output').innerText += `송신 메시지: ${message}\n`;
+        const messageContent = document.getElementById('message').value;
+        const message = {
+            sender: "ClientUser",
+            content: messageContent
+        };
+        socket.send(JSON.stringify(message)); // JSON 형식으로 전송
     }
 </script>
 </body>
